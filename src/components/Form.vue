@@ -1,113 +1,51 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+  <div>
+    <h2>Form</h2>
+     <b-field :label="field.field" v-for="(field, key) in insuranceDetail.field_set"
+      :key="key">
+        <b-select :placeholder="field.field" v-if="field.type === 'select'"
+          v-model="submission[field.id]" expanded>
+            <option v-for="(option, key) in field.option_set" :key="key" :value="option.id">
+              {{ option.display }}
+            </option>
+        </b-select>
+        <div class="block" v-else-if="field.type === 'radio'">
+          <b-radio  v-for="(option, key) in field.option_set" :key="key"
+            v-model="submission[field.id]"  :native-value="option.id">{{option.display}}</b-radio>
+        </div>
+        <div class="block" v-else-if="field.type === 'checkbox'">
+          <b-checkbox  v-for="(option, key) in field.option_set" :key="key"
+            v-model="submission[field.id]"  :native-value="option.id">{{option.display}}</b-checkbox>
+        </div>
+
+        <b-input v-model="submission[field.id]" :pattern="field.validation"
+          :type="field.type" :placeholder="field.field" v-else></b-input>
+      </b-field>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      insuranceDetail: {},
+      submission: {},
+      t: []
     }
+  },
+  mounted () {
+    const loader = this.$loading.open()
+    axios.get(`/api/insurer/risks/${this.$route.params.id}/`).then(data => {
+      loader.close()
+      for (const field of data.data['field_set']){
+        if (field.type === 'checkbox') {
+          this.submission[field.id] = []
+        }
+      }
+      this.insuranceDetail = data.data
+    })
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
