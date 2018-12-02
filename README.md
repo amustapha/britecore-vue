@@ -16,6 +16,7 @@ Using [buefy](https://buefy.github.io/) UI library, I sketched out a basic UI th
 git clone https://github.com/m-bryo/britecore.git
 
 # install dependencies
+cd britecore
 npm install
 
 # serve with hot reload at localhost:8080
