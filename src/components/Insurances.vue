@@ -13,6 +13,7 @@
             {{ insurance.description }}
           </div>
           <footer class="card-footer">
+            <router-link :to="`/${insurance.id}/submissions`" class="card-footer-item">Responses</router-link>
             <router-link :to="`/${insurance.id}`" class="card-footer-item">Open</router-link>
           </footer>
         </div>

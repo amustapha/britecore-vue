@@ -55,7 +55,7 @@ export default {
       loader.close()
       this.$toast.open({
         duration: 5000,
-        message: `Unable to fetch risk informaiton`,
+        message: `Unable to fetch risk informaiton<br/>${err.message}`,
         position: 'is-bottom',
         type: 'is-danger'
       })
@@ -91,7 +91,7 @@ export default {
         loader.close()
         this.$toast.open({
           duration: 5000,
-          message: `Error occured while creating risk`,
+          message: `Error occured while creating risk<br/>${err.message}`,
           position: 'is-bottom',
           type: 'is-danger'
         })
