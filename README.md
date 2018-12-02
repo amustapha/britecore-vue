@@ -10,6 +10,7 @@ My method of solving the problem was by creating a system that allows creating a
 Using [buefy](https://buefy.github.io/) UI library, I sketched out a basic UI that displays all existing risks on one page and a generated form based on the fields described on the risk. I used [VueJS](https://vuejs.org) on the frontend and [django rest framework](https://django-rest-framework.org) for the backend with the default SQLite as the database.
 
 # Setup
+You might need to setup the [api](https://github.com/m-bryo/britecore-api) if you haven't done that already.
 
 ``` bash
 # clone the project
