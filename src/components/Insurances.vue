@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Insurances</h2>
     <div class="columns is-multiline ">
       <div class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"
             v-for="(insurance, key) in insuranceList" :key="key">
@@ -19,9 +18,7 @@
         </div>
       </div>
     </div>
-      <router-link to="/new" class="button">
-        Create New Risk
-      </router-link>
+
   </div>
 </template>
 
