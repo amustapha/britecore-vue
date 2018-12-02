@@ -74,7 +74,6 @@
 </template>
 
 <script>
-import qs from 'qs'
 export default {
   name: 'HelloWorld',
   data () {
@@ -92,7 +91,7 @@ export default {
         {label: 'Radio buttons', value: 'radio'},
         {label: 'Select', value: 'select'},
         {label: 'Text', value: 'text'},
-        {label: 'URL', value:'url'}
+        {label: 'URL', value: 'url'}
       ]
     }
   },
@@ -127,8 +126,8 @@ export default {
         })
         this.risk = { 'field_set': [{}] }
       }).catch(err => {
-         this.$toast.open({
-          message: 'New risk definition unsuccessfull!',
+        this.$toast.open({
+          message: `New risk definition unsuccessfull!<br/>${err.message}`,
           type: 'is-error',
           position: 'is-bottom'
         })
