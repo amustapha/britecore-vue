@@ -33,7 +33,7 @@ export default {
   },
   mounted () {
     const loader = this.$loading.open()
-    this.$axios.get('http://localhost:8000/insurer/risks/').then(response => {
+    this.$axios.get('http://britecore-api.amustapha.name.ng/insurer/risks/').then(response => {
       this.insuranceList = response.data
       loader.close()
     })

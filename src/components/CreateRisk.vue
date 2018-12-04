@@ -114,7 +114,7 @@ export default {
           }
         }
       }
-      this.$axios.post('http://localhost:8000/insurer/risks/', this.risk, {
+      this.$axios.post('http://britecore-api.amustapha.name.ng/insurer/risks/', this.risk, {
         headers: {
           'Content-Type': 'application/json'
         }
