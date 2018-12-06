@@ -6,22 +6,22 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'SubmittedList',
   data () {
     return {
       submissions: [],
       columns: []
     }
   },
-  mounted () {
+  created () {
     const loader = this.$loading.open()
-    this.$axios.get(`http://britecore-api.amustapha.name.ng/insurer/risks/${this.$route.params.id}/`).then(data => {
+    this.$axios.get(`${this.$api}insurer/risks/${this.$route.params.id}/`).then(data => {
       loader.close()
       for (const field of data.data['field_set']) {
         this.columns.push({field: field.id.toString(), label: field.field})
       }
     })
-    this.$axios.get(`http://britecore-api.amustapha.name.ng/insurer/submissions/${this.$route.params.id}/`).then(response => {
+    this.$axios.get(`${this.$api}insurer/submissions/${this.$route.params.id}/`).then(response => {
       loader.close()
       this.submissions = response.data
     }).catch(err => {

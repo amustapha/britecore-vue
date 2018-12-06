@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'SubmitRiskForm',
   data () {
     return {
       isRequired: true,
@@ -41,9 +41,9 @@ export default {
       submission: {}
     }
   },
-  mounted () {
+  created () {
     const loader = this.$loading.open()
-    this.$axios.get(`http://britecore-api.amustapha.name.ng/insurer/risks/${this.$route.params.id}/`).then(data => {
+    this.$axios.get(`${this.$api}insurer/risks/${this.$route.params.id}/`).then(data => {
       loader.close()
       for (const field of data.data['field_set']) {
         if (field.type === 'checkbox') {
@@ -76,7 +76,7 @@ export default {
       }
       params.append('submissionvalue_set', fields)
       console.log(JSON.stringify(fields))
-      this.$axios.post(`http://britecore-api.amustapha.name.ng/insurer/submit/`, {
+      this.$axios.post(`${this.$api}insurer/submit/`, {
         'risk': this.$route.params.id,
         'submissionvalue_set': fields
       }).then(response => {

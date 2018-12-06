@@ -1,7 +1,7 @@
 {
   "name": "britecore",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
+  "version": "1.0.1",
+  "description": "Britecore Assessment Frontend",
   "author": "Abdulhakeem Adetunji Mustapha <abdulhakeemmustapha@gmail.com>",
   "private": true,
   "scripts": {

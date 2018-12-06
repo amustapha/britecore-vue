@@ -25,15 +25,15 @@
 
 <script>
 export default {
-  name: 'Insurance List',
+  name: 'InsuranceList',
   data () {
     return {
       insuranceList: []
     }
   },
-  mounted () {
+  created () {
     const loader = this.$loading.open()
-    this.$axios.get('http://britecore-api.amustapha.name.ng/insurer/risks/').then(response => {
+    this.$axios.get(`${this.$api}insurer/risks/`).then(response => {
       this.insuranceList = response.data
       loader.close()
     })

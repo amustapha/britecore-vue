@@ -75,7 +75,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'CreateRisk',
   data () {
     return {
       risk: {
@@ -114,7 +114,7 @@ export default {
           }
         }
       }
-      this.$axios.post('http://britecore-api.amustapha.name.ng/insurer/risks/', this.risk, {
+      this.$axios.post(`${this.$api}/insurer/risks/`, this.risk, {
         headers: {
           'Content-Type': 'application/json'
         }
