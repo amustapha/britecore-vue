@@ -11,6 +11,7 @@ Vue.use(Buefy)
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
+Vue.prototype.$api = 'https://bh6xka8e5l.execute-api.us-west-2.amazonaws.com/dev/'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
