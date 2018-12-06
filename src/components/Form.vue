@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h2>Form</h2>
+    <h2>{{insuranceDetail.name}}</h2>
+    <small class="mute mb">{{insuranceDetail.description}}dd</small>
     <form method="post" @submit.prevent="submit">
       <b-field :label="field.field" v-for="(field, key) in insuranceDetail.field_set"
         :message="field.message" :key="key">
@@ -75,7 +76,6 @@ export default {
         })
       }
       params.append('submissionvalue_set', fields)
-      console.log(JSON.stringify(fields))
       this.$axios.post(`${this.$api}insurer/submit/`, {
         'risk': this.$route.params.id,
         'submissionvalue_set': fields

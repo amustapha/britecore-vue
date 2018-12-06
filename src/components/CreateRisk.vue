@@ -106,6 +106,7 @@ export default {
       }
     },
     submit () {
+      const loader = this.$loading.open()
       for (const field of this.risk.field_set) {
         if (field.options) {
           field.option_set = []
@@ -119,6 +120,7 @@ export default {
           'Content-Type': 'application/json'
         }
       }).then(response => {
+        loader.close()
         this.$toast.open({
           message: 'New risk definition has been created!',
           type: 'is-success',
@@ -126,6 +128,7 @@ export default {
         })
         this.risk = { 'field_set': [{}] }
       }).catch(err => {
+        loader.close()
         this.$toast.open({
           message: `New risk definition unsuccessfull!<br/>${err.message}`,
           type: 'is-error',

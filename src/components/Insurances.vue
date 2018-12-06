@@ -10,7 +10,7 @@
             </p>
           </header>
           <div class="card-content">
-            {{ insurance.description }}
+            <p>{{ insurance.description }}</p>
           </div>
           <footer class="card-footer">
             <router-link :to="`/${insurance.id}/submissions`" class="card-footer-item">Responses</router-link>
@@ -40,3 +40,13 @@ export default {
   }
 }
 </script>
+<style>
+.card-content p{
+ overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    line-height: 1.5em;
+    max-height: 7.5em;
+    }
+</style>

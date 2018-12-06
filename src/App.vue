@@ -30,6 +30,23 @@ export default {
 }
 </script>
 
-<style>
+  <style>
+  h1, h2, h3 { font-weight: bold }
+  h1 {
+    font-size: 2.4em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.7em;
+  }
 
-</style>
+  .mute {
+    color: #777;
+  }
+  .mb {
+    display: block;
+    margin-bottom: 24px;
+  }
+  </style>
